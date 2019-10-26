@@ -13,13 +13,14 @@ class StreamCreate extends React.Component {
   }
 
   renderInput = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`
     return (
       //   <input
       //     onChange={formProps.input.onChange}
       //     value={formProps.input.value}
       //   />
       // Above is the same as doing:
-      <div className='field'>
+      <div className={ className }>
         <label>{label}</label>
         <input {...input} />
         {this.renderError(meta)}
