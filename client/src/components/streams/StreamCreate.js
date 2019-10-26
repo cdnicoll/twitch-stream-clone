@@ -2,7 +2,17 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class StreamCreate extends React.Component {
-  renderInput({ input, label, meta }) {
+  renderError({ error, touched }) {
+    if (touched && error) {
+      return (
+        <div className='ui error message'>
+          <div className='header'>{error}</div>
+        </div>
+      );
+    }
+  }
+
+  renderInput = ({ input, label, meta }) => {
     return (
       //   <input
       //     onChange={formProps.input.onChange}
@@ -12,7 +22,7 @@ class StreamCreate extends React.Component {
       <div className='field'>
         <label>{label}</label>
         <input {...input} />
-        <div>{meta.error}</div>
+        {this.renderError(meta)}
       </div>
     );
   }
@@ -25,7 +35,7 @@ class StreamCreate extends React.Component {
     return (
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className='ui form'
+        className='ui form error'
       >
         <Field
           name='title'
@@ -46,6 +56,7 @@ class StreamCreate extends React.Component {
 // redux forms magic method
 // rf always assumes everything is okay if an EMPTY object is returned
 // rf will realize something is wrong if an object is returned (such as an error object)
+// Note that the objects name needs to be the same as the field name
 const validate = formValues => {
   const errors = {};
   if (!formValues.title) {
