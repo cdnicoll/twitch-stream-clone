@@ -1,4 +1,4 @@
-import _ from 'loldash';
+import _ from 'lodash';
 import {
   CREATE_STREAM,
   FETCH_STREAM,
