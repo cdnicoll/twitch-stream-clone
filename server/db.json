@@ -18,9 +18,14 @@
     },
     {
       "title": "programmatic navigation",
-      "description": "you should be redirected to home",
+      "description": "you should be redirected to home testing an update",
       "userId": "102706471157177385234",
       "id": 4
+    },
+    {
+      "title": "test new component",
+      "description": "this stream just updated",
+      "id": 5
     }
   ]
 }
